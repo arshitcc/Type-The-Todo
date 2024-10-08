@@ -1,8 +1,6 @@
 import { useTodoStore } from "../stores/todoStore";
-// import { useState } from "react";
 import { Button } from "./ui/button";
 import { CircleXIcon, PencilRulerIcon, SquareCheckBigIcon, RotateCcwIcon } from "lucide-react";
-// import { Todo } from "@/types/todo";
 
 export const TodoList = () => {
 
@@ -12,7 +10,7 @@ export const TodoList = () => {
   const setCurrentTodo = useTodoStore((state) => state.setCurrentTodo);
 
   return (
-    <div className="mt-12 p-8 bg-zinc-500 rounded-xl">
+    <div className="mt-12 p-4 bg-zinc-500 rounded-xl">
       {todos.length === 0 ? (
         <p>NO TASKS !!</p>
       ) : (
@@ -20,10 +18,10 @@ export const TodoList = () => {
           {todos.map((todo) => (
             <li key={todo._id} className="grid grid-cols-1 grid-rows-4 md:grid-cols-8 md:grid-rows-1 justify-between items-center border border-gray-900 rounded-sm p-2">
               <div className="row-span-3 col-span-6 text-left">
-                <h3 className={`text-lg font-bold ${todo.isCompleted ? "line-through" : ""}`}>
+                <h3 className={`text-lg font-bold break-words whitespace-normal ${todo.isCompleted ? "line-through" : ""}`}>
                   {todo.title}
                 </h3>
-                <p>{todo.description}</p>
+                <p className="break-words whitespace-normal">{todo.description}</p>
               </div>
               <div className="row-span-1 col-span-2 grid grid-cols-3 gap-2 items-center">
                 <Button onClick={() => setCurrentTodo?.(todo)}>
